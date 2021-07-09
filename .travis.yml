@@ -1,11 +1,12 @@
 sudo required
+language: generic 
 services:
   - docker
 
 before_install;
   - dockerbuild -t praveenkumar081097/react-test -f ./ent/Dockerfile.dev ./client
 script:
-  - dockerbuild -t praveenkumar081097/react-test npm test -- --coverage
+  - docker run -e CI=true -t praveenkumar081097/react-test npm test
 
 after_success:
   - docker build -t praveenkumar081097/multi-client ./client
