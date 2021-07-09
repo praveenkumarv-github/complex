@@ -3,7 +3,7 @@ language: generic
 services:
   - docker
 
-before_install;
+before_install:
   - dockerbuild -t praveenkumar081097/react-test -f ./ent/Dockerfile.dev ./client
 script:
   - docker run -e CI=true -t praveenkumar081097/react-test npm test
